@@ -282,26 +282,3 @@ jQuery(document).ready(function($) {
   siteScroll();
 
 });
-
-
-      document.addEventListener('DOMContentLoaded', function() {
-		const changeImageButton = document.getElementById('changeImageButton');
-		const randomImage = document.getElementById('randomImage');
-
-		changeImageButton.addEventListener('click', async function() {
-			try {
-				const response = await fetch('/.netlify/functions/unsplash/unsplash.js');
-				if (!response.ok) {
-					throw new Error('Failed to fetch image');
-				}
-
-				const data = await response.json();
-				const imageUrl = data.imageUrl;
-
-				// Update the image source with the fetched URL
-				randomImage.src = imageUrl;
-			} catch (error) {
-				console.error('Error fetching image:', error);
-			}
-		});
-	});
